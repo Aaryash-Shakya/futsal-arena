@@ -3,7 +3,6 @@
 		<h2 class="card-header">Team Standings</h2>
 
 		<StandingsTable :standings="teamStandings" />
-		<Placeholder class="h-8" />
 	</div>
 </template>
 

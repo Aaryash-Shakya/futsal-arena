@@ -1,5 +1,11 @@
+<script setup lang="ts">
+import MatchSchedule from "~/components/MatchSchedule.vue";
+import TeamStandings from "~/components/TeamStandings.vue";
+</script>
+
 <template>
-    <div class="container">
-        <TeamStandings />
-    </div>
+	<div class="container">
+		<MatchSchedule />
+		<TeamStandings />
+	</div>
 </template>

@@ -25,7 +25,7 @@
 
 	--color-bg-base: #212227;
 	--color-bg-base-dark: #1b1c21;
-	--color-bg-surface: #212227;
+	--color-bg-surface: #14151b;
 	--color-bg-muted: #2e3034;
 
 	--color-primary: #5742a9;
@@ -50,7 +50,7 @@ body {
 }
 
 .card {
-	@apply bg-bg-surface px-6 py-8 rounded-2xl flex flex-col gap-8;
+	@apply bg-bg-surface px-6 py-8 rounded-2xl flex flex-col gap-8 my-8;
 }
 
 .card-header {

@@ -14,21 +14,12 @@
 		<div
 			v-for="(team, index) in standings"
 			:key="team.id"
-			class="flex items-center justify-between text-para-medium text-text px-2 py-4 bg-primary-muted rounded-xl"
+			class="flex items-center justify-between text-para-medium text-text px-2 py-4 rounded-xl"
+			:class="index <= 1 ? 'bg-primary-muted' : 'bg-secondary-muted'"
 		>
-			<div class="w-10 text-center">{{ index }}</div>
-			<div class="w-1/2 flex items-center gap-4">
-				<div class="w-12 h-12 overflow-hidden">
-					<NuxtImg
-						:src="team.logo"
-						:alt="team.name"
-						class="w-full h-full"
-						quality="100"
-						fit="cover"
-					/>
-				</div>
-
-				<div>{{ team.name }}</div>
+			<div class="w-10 text-center">{{ index + 1 }}</div>
+			<div class="w-1/2">
+				<TeamNameAndLogo :team-name="team.name" />
 			</div>
 			<div class="w-1/3 text-center flex flex-row items-center justify-around">
 				<span class="w-1/6">{{ team.wins }}</span>
@@ -43,6 +34,7 @@
 
 <script setup lang="ts">
 import type { TeamStanding } from "~/data/teamStandings";
+import TeamNameAndLogo from "./TeamNameAndLogo.vue";
 
 defineProps<{ standings: Array<TeamStanding> }>();
 </script>

@@ -1,6 +1,8 @@
+export type TeamName = "Team Alok" | "Team Saroj" | "Team Samrat";
+
 export type TeamStanding = {
 	id: number;
-	name: string;
+	name: TeamName;
 	wins: number;
 	losses: number;
 	draws: number;
