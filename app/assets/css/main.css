@@ -1,18 +1,19 @@
 @import "tailwindcss";
+@import "@nuxt/ui";
 
 /* Tailwind v4 Custom Theme Variables */
 @theme {
-	--color-background: #0e0f15;
-	--color-surface: #181c2a;
-	--color-surface-light: #1e2332;
-	--color-soft: #282f45;
-	--color-soft-hover: #323852;
-	--color-accent-run: #6366f1;
-	--color-accent-run-hover: #5855eb;
-	--color-accent-walk: #fbbf24;
-	--color-text: #ffffff;
-	--color-muted: rgb(255 255 255 / 0.6);
-	--color-muted-light: rgb(255 255 255 / 0.8);
+	--font-sans: "Inter", sans-serif;
 
-	--font-family-inter: Inter, sans-serif;
+	--color-bg-base: #f6f6f4;
+	--color-bg-base-dark: #fbfbfb;
+	--color-bg-surface: #ffffff;
+	--color-bg-muted: #efefef;
+
+	--color-primary: #5742a9;
+	--color-primary-muted: rgb(87, 66, 169, 0.1);
+	--color-secondary: #560617;
+	--color-secondary-muted: rgb(86, 6, 23, 0.1);
+	--color-success: #24a700;
+	--color-danger: #ff0000;
 }

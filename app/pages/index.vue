@@ -1,13 +1,26 @@
 <template>
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
-        <h1 class="text-4xl font-bold text-blue-600">
-            Hello World
-        </h1>
-    </div>
+    <ClientOnly v-if="!colorMode?.forced">
+        <UButton :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'" color="neutral" variant="ghost"
+            @click="isDark = !isDark" />
+
+        <div class="text-4xl text-primary">hi how are you</div>
+        <template #fallback>
+            <div class="text-4xl text-red-500">hi how are you</div>
+        </template>
+    </ClientOnly>
 </template>
 
 <script setup>
-// No script needed for this simple page
+const colorMode = useColorMode()
+
+const isDark = computed({
+    get() {
+        return colorMode.value === 'dark'
+    },
+    set(_isDark) {
+        colorMode.preference = _isDark ? 'dark' : 'light'
+    }
+})
 </script>
 
 <style>
