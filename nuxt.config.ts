@@ -9,7 +9,4 @@ export default defineNuxtConfig({
 		plugins: [tailwindcss()],
 	},
 	modules: ["@nuxt/eslint", "@nuxt/icon", "@nuxt/fonts", "@nuxt/image", "@nuxt/ui"],
-	colorMode: {
-		classSuffix: "",
-	},
 });

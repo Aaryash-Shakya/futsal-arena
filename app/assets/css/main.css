@@ -1,14 +1,13 @@
 @import "tailwindcss";
-@import "@nuxt/ui";
 
 /* Tailwind v4 Custom Theme Variables */
 @theme {
-	--font-sans: "Inter", sans-serif;
+	--font-inter: "Inter", sans-serif;
 
 	--color-bg-base: #f6f6f4;
 	--color-bg-base-dark: #fbfbfb;
 	--color-bg-surface: #ffffff;
-	--color-bg-muted: #efefef;
+	--color-bg-muted: #e6e6e6;
 
 	--color-primary: #5742a9;
 	--color-primary-muted: rgb(87, 66, 169, 0.1);
@@ -16,4 +15,51 @@
 	--color-secondary-muted: rgb(86, 6, 23, 0.1);
 	--color-success: #24a700;
 	--color-danger: #ff0000;
+
+	--color-text: #000000;
+	--color-muted: #636363;
+}
+
+.dark {
+	--font-inter: "Inter", sans-serif;
+
+	--color-bg-base: #212227;
+	--color-bg-base-dark: #1b1c21;
+	--color-bg-surface: #212227;
+	--color-bg-muted: #2e3034;
+
+	--color-primary: #5742a9;
+	--color-primary-muted: rgb(87, 66, 169, 0.1);
+	--color-secondary: #006aa9;
+	--color-secondary-muted: rgb(0, 106, 169, 0.1);
+	--color-success: #36ff00;
+	--color-danger: #ff0000;
+
+	--color-text: #ffffff;
+	--color-muted: #a4a4a4;
+}
+
+@layer utilities {
+	.container {
+		@apply mx-auto px-4;
+	}
+}
+
+body {
+	@apply bg-bg-base text-text font-sans;
+}
+
+.card {
+	@apply bg-bg-surface px-6 py-8 rounded-2xl flex flex-col gap-8;
+}
+
+.card-header {
+	@apply text-xl font-semibold;
+}
+
+.text-para-regular {
+	@apply text-base font-inter font-normal;
+}
+.text-para-medium {
+	@apply text-base font-inter font-medium;
 }
