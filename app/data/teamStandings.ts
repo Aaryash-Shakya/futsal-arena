@@ -18,7 +18,7 @@ export const teamStandings: TeamStanding[] = [
 		losses: 1,
 		draws: 2,
 		sequence: ["win", "draw", "win", "loss", "draw", "win"],
-		logo: "/images/chelsea.png",
+		logo: "/images/gladiators.png",
 	},
 	{
 		id: 2,
@@ -27,7 +27,7 @@ export const teamStandings: TeamStanding[] = [
 		losses: 3,
 		draws: 1,
 		sequence: ["loss", "win", "loss", "draw", "win", "loss"],
-		logo: "/images/arsenal.png",
+		logo: "/images/storm.png",
 	},
 	{
 		id: 3,
@@ -36,6 +36,6 @@ export const teamStandings: TeamStanding[] = [
 		losses: 0,
 		draws: 2,
 		sequence: ["draw", "win", "win", "draw", "win", "win"],
-		logo: "/images/manchester.png",
+		logo: "/images/titan.png",
 	},
 ];
