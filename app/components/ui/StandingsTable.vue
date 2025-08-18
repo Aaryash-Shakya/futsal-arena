@@ -1,7 +1,7 @@
 <template>
 	<div class="standings-table flex flex-col gap-2">
 		<div class="flex justify-between text-muted text-para-regular p-2">
-			<div class="w-10"></div>
+			<div class="w-10" />
 			<div class="w-1/2">Team</div>
 			<div class="w-1/3 text-center flex flex-row items-center justify-around text-text">
 				<span class="w-1/6">W</span>
