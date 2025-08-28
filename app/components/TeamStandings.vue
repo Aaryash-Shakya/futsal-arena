@@ -1,5 +1,5 @@
 <template>
-	<div class="rounded-2xl shadow-xl border overflow-hidden mb-8" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
+	<div class="rounded-2xl shadow-xl border overflow-hidden mb-8 backdrop-blur-sm" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
 		<div class="px-6 py-6 border-b" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
 			<h2 class="text-2xl font-bold flex items-center gap-3" style="color: var(--color-text);">
 				<UIcon name="i-lucide-trophy" class="text-3xl" style="color: var(--color-primary);" />

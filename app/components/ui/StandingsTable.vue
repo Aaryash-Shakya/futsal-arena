@@ -49,29 +49,30 @@
 			</div>
 
 			<!-- Played -->
-			<div class="col-span-1 text-center font-medium" style="color: var(--color-text);">{{ team.gamesPlayed }}</div>
+			<div class="col-span-1 text-center text-sm font-medium" style="color: var(--color-text);">{{ team.gamesPlayed }}</div>
 
 			<!-- Won -->
-			<div class="col-span-1 text-center font-medium" style="color: var(--color-stat-text);">{{ team.wins }}</div>
+			<div class="col-span-1 text-center text-sm font-medium" style="color: var(--color-stat-text);">{{ team.wins }}</div>
 
 			<!-- Drawn -->
-			<div class="col-span-1 text-center font-medium" style="color: var(--color-stat-text);">{{ team.draws }}</div>
+			<div class="col-span-1 text-center text-sm font-medium" style="color: var(--color-stat-text);">{{ team.draws }}</div>
 
 			<!-- Lost -->
-			<div class="col-span-1 text-center font-medium" style="color: var(--color-stat-text);">{{ team.losses }}</div>
+			<div class="col-span-1 text-center text-sm font-medium" style="color: var(--color-stat-text);">{{ team.losses }}</div>
 
 			<!-- Goal Difference -->
-			<div class="col-span-1 text-center font-bold" style="color: var(--color-stat-text);">
+			<div class="col-span-1 text-center text-sm font-bold" style="color: var(--color-stat-text);">
 				{{ team.goalDifference >= 0 ? '+' : '' }}{{ team.goalDifference }}
 			</div>
 
 			<!-- Points -->
 			<div class="col-span-2 text-center">
 				<div 
-					class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg font-bold"
+					class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg font-bold text-sm border"
 					style="
 						background-color: var(--color-points-bg);
 						color: var(--color-points-text);
+						border-color: var(--color-points-text);
 					"
 				>
 					{{ team.points }}

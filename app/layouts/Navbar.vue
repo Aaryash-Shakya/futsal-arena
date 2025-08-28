@@ -1,6 +1,6 @@
 <template>
-	<div class="w-full backdrop-blur-md shadow-lg border-b transition-all duration-300" style="background-color: rgba(255, 255, 255, 0.8); border-color: var(--color-bg-muted);">
-		<nav class="container flex items-center justify-between h-16 px-6 py-4">
+	<div class="w-full backdrop-blur-md shadow-sm border-b transition-all duration-300 mb-8" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
+		<nav class="container flex items-center justify-between h-16 px-6 py-4 mx-auto">
 			<!-- Logo -->
 			<div class="flex items-center gap-3">
 				<div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(to right, var(--color-primary), var(--color-secondary));">
@@ -18,11 +18,11 @@
 
 			<!-- Dark Mode Toggle -->
 			<button
-				class="text-2xl focus:outline-none cursor-pointer grid items-center p-3 rounded-full transition-all duration-200 border"
-				style="border-color: var(--color-bg-muted); background-color: var(--color-primary-muted);"
+				class="p-2 rounded-lg transition-all duration-200 border hover:scale-105"
+				style="border-color: var(--color-bg-muted); background-color: var(--color-bg-base);"
 				@click="toggleDark"
 			>
-				<UIcon :name="isDark ? 'lucide:sun-dim' : 'lucide:moon'" style="color: var(--color-primary);" />
+				<UIcon :name="isDark ? 'lucide:sun-dim' : 'lucide:moon'" class="text-xl" style="color: var(--color-primary);" />
 			</button>
 		</nav>
 	</div>

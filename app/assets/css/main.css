@@ -52,6 +52,7 @@
 	--color-bg-base-dark: #1e293b;
 	--color-bg-surface: #1e293b;
 	--color-bg-muted: #334155;
+	--color-bg-surface-rgb: 30, 41, 59;
 
 	/* Primary & Secondary Colors */
 	--color-primary: #60a5fa;
@@ -88,10 +89,10 @@
 
 	/* Standings Stats */
 	--color-stat-text: #64748b;
-	--color-points-bg: var(--color-primary);
-	--color-points-text: #ffffff;
-	--color-score-bg: var(--color-primary);
-	--color-score-text: #ffffff;
+	--color-points-bg: rgba(96, 165, 250, 0.15);
+	--color-points-text: #60a5fa;
+	--color-score-bg: rgba(96, 165, 250, 0.15);
+	--color-score-text: #60a5fa;
 }
 
 .dark {

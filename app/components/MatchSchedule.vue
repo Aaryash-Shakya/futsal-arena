@@ -1,5 +1,5 @@
 <template>
-	<div class="rounded-2xl shadow-xl border overflow-hidden" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
+	<div class="rounded-2xl shadow-xl border overflow-hidden backdrop-blur-sm" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
 		<div class="px-6 py-6 border-b" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
 			<h2 class="text-2xl font-bold flex items-center gap-3" style="color: var(--color-text);">
 				<UIcon name="i-lucide-calendar" class="text-3xl" style="color: var(--color-primary);" />
@@ -86,7 +86,7 @@
 
 					<!-- Score or vs separator -->
 					<div class="col-span-1 text-center font-semibold">
-						<span v-if="match.result" class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg font-bold" style="background-color: var(--color-score-bg); color: var(--color-score-text);">
+						<span v-if="match.result" class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg font-bold border" style="background-color: var(--color-score-bg); color: var(--color-score-text); border-color: var(--color-score-text);">
 							{{ match.result.homeScore }} - {{ match.result.awayScore }}
 						</span>
 						<span v-else class="text-base" style="color: var(--color-text-muted);">vs</span>
