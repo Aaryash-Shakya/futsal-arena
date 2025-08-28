@@ -5,6 +5,14 @@ export default defineNuxtConfig({
 	compatibilityDate: "2025-07-15",
 	devtools: { enabled: true },
 	css: ["~/assets/css/main.css"],
+	app: {
+		head: {
+			title: "Arbyte FC",
+			meta: [
+				{ name: "description", content: "Arbyte FC - Professional Futsal Arena Management" }
+			]
+		}
+	},
 	vite: {
 		plugins: [tailwindcss()],
 	},

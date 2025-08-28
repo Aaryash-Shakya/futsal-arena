@@ -16,46 +16,33 @@
 				</div>
 			</div>
 
-			<!-- Dark Mode Toggle -->
-			<button
+			<!-- Dark Mode Toggle - Hidden but keeping for future implementation -->
+			<!-- <button
 				class="w-10 h-10 rounded-lg transition-all duration-200 border hover:scale-105 flex items-center justify-center"
 				style="border-color: var(--color-bg-muted); background-color: var(--color-bg-base);"
 				@click="toggleDark"
 			>
 				<UIcon :name="isDark ? 'lucide:sun-dim' : 'lucide:moon'" class="text-xl" style="color: var(--color-primary);" />
-			</button>
+			</button> -->
 		</nav>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { UIcon } from "#components";
-import { ref, onMounted } from "vue";
-
-const isDark = ref(false);
+import { onMounted } from "vue";
 
 onMounted(() => {
-	// Detect system preference and saved theme only on client
-	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-	const savedTheme = localStorage.getItem("theme");
-	isDark.value = savedTheme === "dark" ? true : savedTheme === "light" ? false : prefersDark;
-
-	// Apply initial theme
-	document.documentElement.classList.toggle("dark", isDark.value);
-
-	// Listen to system theme changes
-	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
-		if (!localStorage.getItem("theme")) {
-			isDark.value = e.matches;
-			document.documentElement.classList.toggle("dark", isDark.value);
-		}
-	});
+	// Always enforce dark mode
+	document.documentElement.classList.add("dark");
+	localStorage.setItem("theme", "dark");
 });
 
-// Toggle function
-function toggleDark() {
-	isDark.value = !isDark.value;
-	document.documentElement.classList.toggle("dark", isDark.value);
-	localStorage.setItem("theme", isDark.value ? "dark" : "light");
-}
+// Future implementation for light mode toggle
+// const isDark = ref(true);
+// function toggleDark() {
+// 	isDark.value = !isDark.value;
+// 	document.documentElement.classList.toggle("dark", isDark.value);
+// 	localStorage.setItem("theme", isDark.value ? "dark" : "light");
+// }
 </script>
