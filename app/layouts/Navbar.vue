@@ -1,5 +1,5 @@
 <template>
-	<div class="w-full backdrop-blur-md shadow-sm border-b transition-all duration-300 mb-8" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
+	<div class="w-full backdrop-blur-md shadow-sm border-b transition-all duration-300" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
 		<nav class="container flex items-center justify-between h-16 px-6 py-4 mx-auto">
 			<!-- Logo -->
 			<div class="flex items-center gap-3">
