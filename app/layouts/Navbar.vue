@@ -8,21 +8,21 @@
 				</div>
 				<div class="flex flex-col">
 					<div class="font-bold text-xl" style="background: linear-gradient(to right, var(--color-primary), var(--color-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-						Futsal Arena
+						Arbyte FC
 					</div>
 					<div class="text-xs -mt-1" style="color: var(--color-text-muted);">
-						League Manager
+						Goal handim???
 					</div>
 				</div>
 			</div>
 
 			<!-- Dark Mode Toggle -->
 			<button
-				class="p-2 rounded-lg transition-all duration-200 border hover:scale-105"
+				class="w-10 h-10 rounded-lg transition-all duration-200 border hover:scale-105 flex items-center justify-center"
 				style="border-color: var(--color-bg-muted); background-color: var(--color-bg-base);"
 				@click="toggleDark"
 			>
-				<UIcon :name="isDark ? 'lucide:sun-dim' : 'lucide:moon'" class="text-xl" style="color: var(--color-primary);" />
+				<UIcon :name="isDark ? 'lucide:sun-dim' : 'lucide:moon'" class="text-lg" style="color: var(--color-primary);" />
 			</button>
 		</nav>
 	</div>

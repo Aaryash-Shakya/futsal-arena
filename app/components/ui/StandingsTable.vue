@@ -1,81 +1,72 @@
 <template>
-	<div class="standings-table flex flex-col gap-3">
-		<!-- Header -->
-		<div class="grid grid-cols-12 text-sm font-semibold px-4 py-3 border-b-2" style="color: var(--color-text-muted); border-color: var(--color-primary-muted);">
-			<div class="col-span-1 text-center">#</div>
-			<div class="col-span-4">Team</div>
-			<div class="col-span-1 text-center">P</div>
-			<div class="col-span-1 text-center">W</div>
-			<div class="col-span-1 text-center">D</div>
-			<div class="col-span-1 text-center">L</div>
-			<div class="col-span-1 text-center">GD</div>
-			<div class="col-span-2 text-center font-bold">Pts</div>
-		</div>
-
-		<!-- Qualification Legend -->
-		<div class="flex items-center gap-4 px-4 py-2 text-sm rounded-lg" style="background-color: var(--color-qualified-light); border: 1px solid var(--color-qualified-border);">
-			<div class="flex items-center gap-2">
-				<div class="w-3 h-3 rounded-full" style="background-color: var(--color-qualified);" />
-				<span style="color: var(--color-text-muted);">Top 2 teams qualify for finals</span>
-			</div>
-		</div>
-
-		<!-- Team Rows -->
-		<div
-			v-for="(team, index) in standings"
-			:key="team._id"
-			class="grid grid-cols-12 items-center px-4 py-4 rounded-xl transition-all duration-200 hover:shadow-lg border"
-			:style="getPositionStyling(index)"
-		>
-			<!-- Position -->
-			<div class="col-span-1 text-center">
-				<div 
-					class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-white relative"
-					:style="getPositionBadgeStyle(index)"
-				>
-					{{ index + 1 }}
-					<!-- Qualification indicator for top 2 -->
-					<div 
-						v-if="index < 2" 
-						class="absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-white"
-						style="background-color: var(--color-qualified);"
-					/>
+	<div class="standings-table flex flex-col gap-4">
+		<!-- Table Container for Horizontal Scroll -->
+		<div class="overflow-x-auto">
+			<div class="min-w-max">
+				<!-- Header -->
+				<div class="flex text-sm font-medium px-4 py-2 border-b-2" style="color: var(--color-text-muted); border-color: var(--color-primary-muted);">
+					<div class="w-12 flex-shrink-0">#</div>
+					<div class="flex-1 min-w-32">Team</div>
+					<div class="flex gap-4 ml-6">
+						<div class="w-10 text-center cursor-help" title="Games Played">GP</div>
+						<div class="w-10 text-center cursor-help" title="Wins">W</div>
+						<div class="w-10 text-center cursor-help" title="Draws">D</div>
+						<div class="w-10 text-center cursor-help" title="Losses">L</div>
+						<div class="w-10 text-center cursor-help" title="Goal Difference">GD</div>
+						<div class="w-14 text-center cursor-help" title="Points">Pts</div>
+					</div>
 				</div>
-			</div>
 
-			<!-- Team -->
-			<div class="col-span-4">
-				<TeamNameAndLogo :team-name="team.name" />
-			</div>
-
-			<!-- Played -->
-			<div class="col-span-1 text-center text-sm font-medium" style="color: var(--color-text);">{{ team.gamesPlayed }}</div>
-
-			<!-- Won -->
-			<div class="col-span-1 text-center text-sm font-medium" style="color: var(--color-stat-text);">{{ team.wins }}</div>
-
-			<!-- Drawn -->
-			<div class="col-span-1 text-center text-sm font-medium" style="color: var(--color-stat-text);">{{ team.draws }}</div>
-
-			<!-- Lost -->
-			<div class="col-span-1 text-center text-sm font-medium" style="color: var(--color-stat-text);">{{ team.losses }}</div>
-
-			<!-- Goal Difference -->
-			<div class="col-span-1 text-center text-sm font-bold" style="color: var(--color-stat-text);">
-				{{ team.goalDifference >= 0 ? '+' : '' }}{{ team.goalDifference }}
-			</div>
-
-			<!-- Points -->
-			<div class="col-span-2 text-center">
-				<div 
-					class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg font-bold text-sm border"
-					style="
-						background-color: var(--color-points-bg);
-						color: var(--color-points-text);
-						border-color: var(--color-points-text);
-					"
+				<!-- Team Rows -->
+				<div
+					v-for="(team, index) in standings"
+					:key="team._id"
+					class="flex items-center px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-md border mb-3"
+					:style="getPositionStyling(index)"
 				>
-					{{ team.points }}
+					<!-- Position -->
+					<div class="w-12 flex-shrink-0">
+						<div 
+							class="w-6 h-6 rounded-full flex items-center justify-center font-medium text-white text-xs"
+							:style="getPositionBadgeStyle(index)"
+						>
+							{{ index + 1 }}
+						</div>
+					</div>
+
+					<!-- Team -->
+					<div class="flex-1 min-w-32">
+						<TeamNameAndLogo :team-name="team.name" />
+					</div>
+
+					<!-- Stats Group -->
+					<div class="flex gap-4 ml-6 items-center">
+						<!-- Played -->
+						<div class="w-10 text-center text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center justify-center">{{ team.gamesPlayed }}</div>
+
+						<!-- Won -->
+						<div class="w-10 text-center text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center justify-center">{{ team.wins }}</div>
+
+						<!-- Drawn -->
+						<div class="w-10 text-center text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center justify-center">{{ team.draws }}</div>
+
+						<!-- Lost -->
+						<div class="w-10 text-center text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center justify-center">{{ team.losses }}</div>
+
+						<!-- Goal Difference -->
+						<div class="w-10 text-center text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center justify-center">
+							{{ team.goalDifference >= 0 ? '+' : '' }}{{ team.goalDifference }}
+						</div>
+
+						<!-- Points -->
+						<div class="w-14 text-center flex items-center justify-center">
+							<div 
+								class="inline-flex items-center justify-center px-2 py-1 rounded-md font-medium text-sm bg-purple-50 text-purple-600 border border-purple-100 dark:bg-purple-900/10 dark:text-purple-400 dark:border-purple-800/30"
+							>
+								{{ team.points }}
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -90,11 +81,11 @@ defineProps<{ standings: Array<TTeamStanding> }>();
 
 const getPositionStyling = (index: number) => {
 	if (index < 2) {
-		// Top 2 - Qualified for finals
+		// Top 2 - Qualified for finals (very subtle green)
 		return {
-			backgroundColor: 'var(--color-qualified-light)',
-			borderColor: 'var(--color-qualified-border)',
-			borderWidth: '2px'
+			backgroundColor: 'rgba(34, 197, 94, 0.03)',
+			borderColor: 'rgba(34, 197, 94, 0.1)',
+			borderWidth: '1px'
 		};
 	}
 	return {
