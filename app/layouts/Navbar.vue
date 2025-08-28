@@ -22,7 +22,7 @@
 				style="border-color: var(--color-bg-muted); background-color: var(--color-bg-base);"
 				@click="toggleDark"
 			>
-				<UIcon :name="isDark ? 'lucide:sun-dim' : 'lucide:moon'" class="text-lg" style="color: var(--color-primary);" />
+				<UIcon :name="isDark ? 'lucide:sun-dim' : 'lucide:moon'" class="text-xl" style="color: var(--color-primary);" />
 			</button>
 		</nav>
 	</div>
