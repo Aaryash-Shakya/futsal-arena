@@ -23,7 +23,8 @@ export default defineEventHandler(async (event) => {
       const events = await Event.find(filter)
         .populate('matchId', 'homeTeam awayTeam date location')
         .populate('playerId', 'name')
-        .sort({ timestamp: -1 });
+        .populate('teamId', 'name')
+        .sort({ createdAt: -1 });
       
       return events;
     }
@@ -32,19 +33,18 @@ export default defineEventHandler(async (event) => {
       // Create new event
       const body = await readBody(event);
       
-      if (!body.matchId || !body.playerId || !body.eventType || !body.timestamp || body.minute === undefined) {
+      if (!body.matchId || !body.playerId || !body.teamId || !body.eventType) {
         throw createError({
           statusCode: 400,
-          statusMessage: 'matchId, playerId, eventType, timestamp, and minute are required',
+          statusMessage: 'matchId, playerId, teamId, and eventType are required',
         });
       }
 
       const newEvent = new Event({
         matchId: body.matchId,
         playerId: body.playerId,
+        teamId: body.teamId,
         eventType: body.eventType,
-        timestamp: new Date(body.timestamp),
-        minute: body.minute,
       });
 
       const savedEvent = await newEvent.save();

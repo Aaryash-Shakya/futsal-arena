@@ -5,7 +5,7 @@ import TeamStandings from "~/components/TeamStandings.vue";
 
 <template>
 	<div class="container">
-		<MatchSchedule />
 		<TeamStandings />
+		<MatchSchedule />
 	</div>
 </template>

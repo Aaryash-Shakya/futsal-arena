@@ -4,20 +4,94 @@
 @theme {
 	--font-inter: "Inter", sans-serif;
 
-	--color-bg-base: #f6f6f4;
-	--color-bg-base-dark: #fbfbfb;
+	/* Background Colors */
+	--color-bg-base: #f0f4f8;
+	--color-bg-base-dark: #e2e8f0;
 	--color-bg-surface: #ffffff;
-	--color-bg-muted: #e6e6e6;
+	--color-bg-muted: #cbd5e1;
 
-	--color-primary: #5742a9;
-	--color-primary-muted: rgb(87, 66, 169, 0.1);
-	--color-secondary: #560617;
-	--color-secondary-muted: rgb(86, 6, 23, 0.1);
-	--color-success: #24a700;
-	--color-danger: #ff0000;
+	/* Primary & Secondary Colors */
+	--color-primary: #3b82f6;
+	--color-primary-muted: rgb(59, 130, 246, 0.1);
+	--color-secondary: #10b981;
+	--color-secondary-muted: rgb(16, 185, 129, 0.1);
+	
+	/* Status Colors */
+	--color-success: #22c55e;
+	--color-danger: #ef4444;
+	--color-warning: #f59e0b;
+	--color-info: #06b6d4;
 
-	--color-text: #000000;
-	--color-muted: #636363;
+	/* Text Colors */
+	--color-text: #1e293b;
+	--color-text-muted: #64748b;
+	--color-text-light: #94a3b8;
+
+	/* Qualification Colors */
+	--color-qualified: #10b981;
+	--color-qualified-light: rgb(16, 185, 129, 0.1);
+	--color-qualified-border: rgb(16, 185, 129, 0.3);
+	
+	/* Position Colors */
+	--color-position-gold: #f59e0b;
+	--color-position-silver: #6b7280;
+	--color-position-bronze: #ea580c;
+	--color-position-regular: #3b82f6;
+
+	/* Match Colors */
+	--color-match-completed: rgb(34, 197, 94, 0.1);
+	--color-match-scheduled: #ffffff;
+	--color-match-hover: rgb(59, 130, 246, 0.05);
+}
+
+.dark {
+	--font-inter: "Inter", sans-serif;
+
+	/* Background Colors */
+	--color-bg-base: #0f172a;
+	--color-bg-base-dark: #1e293b;
+	--color-bg-surface: #1e293b;
+	--color-bg-muted: #334155;
+
+	/* Primary & Secondary Colors */
+	--color-primary: #60a5fa;
+	--color-primary-muted: rgb(96, 165, 250, 0.1);
+	--color-secondary: #34d399;
+	--color-secondary-muted: rgb(52, 211, 153, 0.1);
+	
+	/* Status Colors */
+	--color-success: #4ade80;
+	--color-danger: #f87171;
+	--color-warning: #fbbf24;
+	--color-info: #22d3ee;
+
+	/* Text Colors */
+	--color-text: #f8fafc;
+	--color-text-muted: #cbd5e1;
+	--color-text-light: #94a3b8;
+
+	/* Qualification Colors */
+	--color-qualified: #22c55e;
+	--color-qualified-light: rgba(34, 197, 94, 0.08);
+	--color-qualified-border: rgba(34, 197, 94, 0.2);
+	
+	/* Position Colors */
+	--color-position-gold: #64748b;
+	--color-position-silver: #64748b;
+	--color-position-bronze: #64748b;
+	--color-position-regular: #64748b;
+
+	/* Match Colors */
+	--color-match-completed: rgb(52, 211, 153, 0.1);
+	--color-match-scheduled: #1e293b;
+	--color-match-hover: rgb(96, 165, 250, 0.05);
+
+	/* Standings Stats */
+	--color-stat-text: #64748b;
+	--color-points-bg: var(--color-primary);
+	--color-points-text: #ffffff;
+	--color-score-bg: var(--color-primary);
+	--color-score-text: #ffffff;
 }
 
 .dark {
@@ -41,12 +115,12 @@
 
 @layer utilities {
 	.container {
-		@apply mx-auto px-4;
+		@apply mx-auto px-4 max-w-7xl;
 	}
 }
 
 body {
-	@apply bg-bg-base text-text font-sans;
+	@apply bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 text-text font-sans min-h-screen;
 }
 
 .card {

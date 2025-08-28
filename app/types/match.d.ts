@@ -10,4 +10,12 @@ export type TMatch = {
 	};
 	date: string;
 	location: string;
+	result?: {
+		homeScore: number;
+		awayScore: number;
+		winner?: {
+			_id: string;
+			name: string;
+		};
+	};
 };
