@@ -1,5 +1,6 @@
 import { connectToDatabase } from '../../../utils/database';
-import { Event } from '../../../models';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { Event, Team } from '../../../models'; // Team import needed for mongoose model registration
 
 export default defineEventHandler(async (event) => {
   try {
