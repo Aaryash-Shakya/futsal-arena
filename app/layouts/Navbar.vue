@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { UIcon } from "#components";
 import { onMounted } from "vue";
 
 onMounted(() => {

@@ -17,5 +17,8 @@ export default defineNuxtConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
+	nitro: {
+		preset: "vercel",
+	},
 	modules: ["@nuxt/eslint", "@nuxt/icon", "@nuxt/fonts", "@nuxt/image", "@nuxt/ui"],
 });

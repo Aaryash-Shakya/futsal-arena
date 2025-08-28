@@ -35,7 +35,7 @@
 					<div class="flex items-center justify-center mb-6">
 						<h1 class="text-3xl font-bold text-center">Match Details</h1>
 					</div>
-					
+
 					<!-- Teams and Score -->
 					<div class="flex items-center justify-center gap-12">
 						<!-- Home Team -->
@@ -43,7 +43,9 @@
 							<div class="flex items-center gap-4 mb-3">
 								<TeamNameAndLogo :team-name="match.homeTeam.name" />
 							</div>
-							<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-600/20 text-green-400 text-sm font-medium">
+							<div
+								class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-600/20 text-green-400 text-sm font-medium"
+							>
 								<UIcon name="i-lucide-home" class="text-sm" />
 								Home
 							</div>
@@ -54,11 +56,9 @@
 							<div v-if="match.result" class="text-5xl font-bold text-purple-400 mb-2">
 								{{ match.result.homeScore }} - {{ match.result.awayScore }}
 							</div>
-							<div v-else class="text-3xl font-medium text-gray-400 mb-2">
-								vs
-							</div>
+							<div v-else class="text-3xl font-medium text-gray-400 mb-2">vs</div>
 							<div class="text-sm text-gray-500 font-medium">
-								{{ match.result ? 'Final Score' : 'Upcoming' }}
+								{{ match.result ? "Final Score" : "Upcoming" }}
 							</div>
 						</div>
 
@@ -67,7 +67,9 @@
 							<div class="flex items-center gap-4 mb-3">
 								<TeamNameAndLogo :team-name="match.awayTeam.name" />
 							</div>
-							<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 text-sm font-medium">
+							<div
+								class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 text-sm font-medium"
+							>
 								<UIcon name="i-lucide-plane" class="text-sm" />
 								Away
 							</div>
@@ -78,7 +80,7 @@
 				<!-- Match Information -->
 				<div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
 					<h2 class="text-xl font-semibold mb-4 text-purple-400">Match Information</h2>
-					
+
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<!-- Date & Time -->
 						<div class="bg-gray-900 rounded-lg p-4">
@@ -95,7 +97,7 @@
 								<UIcon name="i-lucide-map-pin" class="text-purple-400" />
 								<h3 class="font-medium">Venue</h3>
 							</div>
-							<p class="text-gray-300">{{ match.location || 'TBD' }}</p>
+							<p class="text-gray-300">{{ match.location || "TBD" }}</p>
 						</div>
 
 						<!-- Status -->
@@ -127,7 +129,7 @@
 								<UIcon name="i-lucide-target" class="text-purple-400 text-xl" />
 								<h4 class="text-lg font-semibold">Goals</h4>
 							</div>
-							
+
 							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<!-- Home Team Goals -->
 								<div>
@@ -136,8 +138,8 @@
 										{{ match.homeTeam.name }}
 									</h5>
 									<div v-if="homeTeamGoals.length > 0" class="space-y-2">
-										<div 
-											v-for="goal in homeTeamGoals" 
+										<div
+											v-for="goal in homeTeamGoals"
 											:key="goal._id"
 											class="flex items-center justify-between p-3 bg-gray-800 rounded-lg"
 										>
@@ -146,7 +148,9 @@
 												<span class="font-medium">{{ goal.playerId.name }}</span>
 											</div>
 											<div class="text-sm text-gray-400">
-												{{ getGoalCount(goal.playerId._id, match.homeTeam._id) }} goal{{ getGoalCount(goal.playerId._id, match.homeTeam._id) > 1 ? 's' : '' }}
+												{{ getGoalCount(goal.playerId._id, match.homeTeam._id) }} goal{{
+													getGoalCount(goal.playerId._id, match.homeTeam._id) > 1 ? "s" : ""
+												}}
 											</div>
 										</div>
 									</div>
@@ -160,8 +164,8 @@
 										{{ match.awayTeam.name }}
 									</h5>
 									<div v-if="awayTeamGoals.length > 0" class="space-y-2">
-										<div 
-											v-for="goal in awayTeamGoals" 
+										<div
+											v-for="goal in awayTeamGoals"
 											:key="goal._id"
 											class="flex items-center justify-between p-3 bg-gray-800 rounded-lg"
 										>
@@ -170,7 +174,9 @@
 												<span class="font-medium">{{ goal.playerId.name }}</span>
 											</div>
 											<div class="text-sm text-gray-400">
-												{{ getGoalCount(goal.playerId._id, match.awayTeam._id) }} goal{{ getGoalCount(goal.playerId._id, match.awayTeam._id) > 1 ? 's' : '' }}
+												{{ getGoalCount(goal.playerId._id, match.awayTeam._id) }} goal{{
+													getGoalCount(goal.playerId._id, match.awayTeam._id) > 1 ? "s" : ""
+												}}
 											</div>
 										</div>
 									</div>
@@ -194,7 +200,6 @@
 </template>
 
 <script setup lang="ts">
-import { UIcon } from "#components";
 import type { TMatch, TMatchEvent } from "~/types/match";
 import TeamNameAndLogo from "~/components/ui/TeamNameAndLogo.vue";
 import { ref, onMounted, computed } from "vue";
@@ -211,7 +216,7 @@ const error = ref<string | null>(null);
 const homeTeamGoals = computed(() => {
 	if (!match.value || !goals.value) return [];
 	return goals.value
-		.filter(goal => goal.teamId === match.value!.homeTeam._id && goal.eventType === 'goal')
+		.filter(goal => goal.teamId === match.value!.homeTeam._id && goal.eventType === "goal")
 		.reduce((acc: TMatchEvent[], goal) => {
 			const existingPlayer = acc.find(g => g.playerId._id === goal.playerId._id);
 			if (!existingPlayer) {
@@ -224,7 +229,7 @@ const homeTeamGoals = computed(() => {
 const awayTeamGoals = computed(() => {
 	if (!match.value || !goals.value) return [];
 	return goals.value
-		.filter(goal => goal.teamId === match.value!.awayTeam._id && goal.eventType === 'goal')
+		.filter(goal => goal.teamId === match.value!.awayTeam._id && goal.eventType === "goal")
 		.reduce((acc: TMatchEvent[], goal) => {
 			const existingPlayer = acc.find(g => g.playerId._id === goal.playerId._id);
 			if (!existingPlayer) {
@@ -256,10 +261,8 @@ const getMatchStatus = (match: TMatch) => {
 
 const getGoalCount = (playerId: string, teamId: string) => {
 	if (!goals.value) return 0;
-	return goals.value.filter(goal => 
-		goal.playerId._id === playerId && 
-		goal.teamId === teamId && 
-		goal.eventType === 'goal'
+	return goals.value.filter(
+		goal => goal.playerId._id === playerId && goal.teamId === teamId && goal.eventType === "goal"
 	).length;
 };
 
@@ -267,13 +270,13 @@ const fetchMatch = async () => {
 	try {
 		isLoading.value = true;
 		error.value = null;
-		
+
 		// Fetch match details from API
 		const matchResponse = await fetch(`/api/matches/${matchId}`);
 		if (!matchResponse.ok) {
-			throw new Error('Failed to fetch match details');
+			throw new Error("Failed to fetch match details");
 		}
-		
+
 		match.value = await matchResponse.json();
 
 		// Fetch match events/goals if match is completed
