@@ -7,11 +7,12 @@ export default defineNuxtConfig({
 	css: ["~/assets/css/main.css"],
 	app: {
 		head: {
+			htmlAttrs: {
+				class: "dark",
+			},
 			title: "Arbyte FC",
-			meta: [
-				{ name: "description", content: "Arbyte FC - Professional Futsal Arena Management" }
-			]
-		}
+			meta: [{ name: "description", content: "Arbyte FC - Professional Futsal Arena Management" }],
+		},
 	},
 	vite: {
 		plugins: [tailwindcss()],
