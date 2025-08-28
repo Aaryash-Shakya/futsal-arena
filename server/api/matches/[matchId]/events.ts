@@ -1,10 +1,14 @@
 import { connectToDatabase } from '../../../utils/database';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Event, Team } from '../../../models'; // Team import needed for mongoose model registration
+import { Event, Team, User, Match } from '../../../models'; // All models needed for population
 
 export default defineEventHandler(async (event) => {
   try {
     await connectToDatabase();
+    
+    // Ensure models are registered (for serverless environments)
+    void Team;
+    void User;
+    void Match;
     
     const matchId = getRouterParam(event, 'matchId');
 
