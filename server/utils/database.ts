@@ -12,6 +12,10 @@ export const connectToDatabase = async () => {
     
     await mongoose.connect(mongoUri);
     
+    // Import all models to ensure they're registered
+    // This is crucial for serverless environments like Vercel
+    await import('../models');
+    
     isConnected = true;
     console.log('Connected to MongoDB');
   } catch (error) {
