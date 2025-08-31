@@ -91,51 +91,101 @@
 						<div
 							v-for="match in matches"
 							:key="match._id"
-							class="grid grid-cols-10 items-center px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-md border mb-1 min-w-[450px]"
+							class="px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-md border mb-1 md:min-w-[450px]"
 							:style="getMatchStyling(match)"
 						>
-							<!-- Home Team (Left) -->
-							<div class="col-span-3">
-								<TeamNameAndLogo :team-name="match.homeTeam.name" />
-							</div>
-
-							<!-- Score or vs separator (Center) -->
-							<div class="col-span-1 flex justify-center">
-								<span
-									v-if="match.result"
-									class="inline-flex items-center justify-center px-2 py-1 rounded-md font-medium text-sm bg-purple-50 text-purple-600 border border-purple-100 dark:bg-purple-900/10 dark:text-purple-400 dark:border-purple-800/30"
-								>
-									{{ match.result.homeScore }} - {{ match.result.awayScore }}
-								</span>
-								<span v-else class="text-sm font-medium text-gray-500 dark:text-gray-500">vs</span>
-							</div>
-
-							<!-- Away Team (Right) -->
-							<div class="col-span-3 flex justify-end">
-								<TeamNameAndLogo :team-name="match.awayTeam.name" :logo-first="false" />
-							</div>
-
-							<!-- Spacer -->
-							<div class="col-span-1" />
-
-							<!-- Date + Info -->
-							<div class="col-span-2 flex items-center justify-end gap-3">
-								<!-- Date -->
-								<div class="text-sm text-gray-700 dark:text-gray-300">
-									{{ formatDate(match.date) }}
+							<!-- Desktop Layout (md and up) -->
+							<div class="hidden md:grid md:grid-cols-10 md:items-center">
+								<!-- Home Team (Left) -->
+								<div class="col-span-3">
+									<TeamNameAndLogo :team-name="match.homeTeam.name" logo-position="left" />
 								</div>
 
-								<!-- Info Icon -->
-								<button
-									class="p-1.5 rounded-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-center"
-									title="View match details"
-									@click="navigateToMatch(match._id)"
-								>
-									<UIcon
-										name="i-lucide-info"
-										class="text-lg text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
-									/>
-								</button>
+								<!-- Score or vs separator (Center) -->
+								<div class="col-span-1 flex justify-center">
+									<span
+										v-if="match.result"
+										class="inline-flex items-center justify-center px-2 py-1 rounded-md font-medium text-sm bg-purple-50 text-purple-600 border border-purple-100 dark:bg-purple-900/10 dark:text-purple-400 dark:border-purple-800/30"
+									>
+										{{ match.result.homeScore }} - {{ match.result.awayScore }}
+									</span>
+									<span v-else class="text-sm font-medium text-gray-500 dark:text-gray-500">vs</span>
+								</div>
+
+								<!-- Away Team (Right) -->
+								<div class="col-span-3 flex justify-end">
+									<TeamNameAndLogo :team-name="match.awayTeam.name" logo-position="right" />
+								</div>
+
+								<!-- Spacer -->
+								<div class="col-span-1" />
+
+								<!-- Date + Info -->
+								<div class="col-span-2 flex items-center justify-end gap-3">
+									<!-- Date -->
+									<div class="text-sm text-gray-700 dark:text-gray-300">
+										{{ formatDate(match.date) }}
+									</div>
+
+									<!-- Info Icon -->
+									<button
+										class="p-1.5 rounded-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-center"
+										title="View match details"
+										@click="navigateToMatch(match._id)"
+									>
+										<UIcon
+											name="i-lucide-info"
+											class="text-lg text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+										/>
+									</button>
+								</div>
+							</div>
+
+							<!-- Mobile Layout (below md) -->
+							<div class="md:hidden flex flex-col gap-3 w-full">
+								<!-- Teams Section -->
+								<div class="flex items-center justify-between gap-4 w-full">
+									<!-- Home Team -->
+									<div class="flex-1 flex justify-center">
+										<TeamNameAndLogo :team-name="match.homeTeam.name" logo-position="top" />
+									</div>
+									
+									<!-- Score or vs separator -->
+									<div class="flex justify-center">
+										<span
+											v-if="match.result"
+											class="inline-flex items-center justify-center px-2 py-1 rounded-md font-medium text-sm bg-purple-50 text-purple-600 border border-purple-100 dark:bg-purple-900/10 dark:text-purple-400 dark:border-purple-800/30"
+										>
+											{{ match.result.homeScore }} - {{ match.result.awayScore }}
+										</span>
+										<span v-else class="text-sm font-medium text-gray-500 dark:text-gray-500">vs</span>
+									</div>
+									
+									<!-- Away Team -->
+									<div class="flex-1 flex justify-center">
+										<TeamNameAndLogo :team-name="match.awayTeam.name" logo-position="top" />
+									</div>
+								</div>
+
+								<!-- Date + Info Section -->
+								<div class="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-700">
+									<!-- Date -->
+									<div class="text-sm text-gray-700 dark:text-gray-300">
+										{{ formatDate(match.date) }}
+									</div>
+
+									<!-- Info Icon -->
+									<button
+										class="p-1.5 rounded-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-center"
+										title="View match details"
+										@click="navigateToMatch(match._id)"
+									>
+										<UIcon
+											name="i-lucide-info"
+											class="text-lg text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
+										/>
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>

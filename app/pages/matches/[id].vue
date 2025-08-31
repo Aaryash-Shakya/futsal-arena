@@ -41,7 +41,7 @@
 						<!-- Home Team -->
 						<div class="text-center">
 							<div class="flex items-center gap-4 mb-3">
-								<TeamNameAndLogo :team-name="match.homeTeam.name" />
+								<TeamNameAndLogo :team-name="match.homeTeam.name" logo-position="top" />
 							</div>
 							<div
 								class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-600/20 text-green-400 text-sm font-medium"
@@ -65,7 +65,7 @@
 						<!-- Away Team -->
 						<div class="text-center">
 							<div class="flex items-center gap-4 mb-3">
-								<TeamNameAndLogo :team-name="match.awayTeam.name" />
+								<TeamNameAndLogo :team-name="match.awayTeam.name" logo-position="top" />
 							</div>
 							<div
 								class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/20 text-blue-400 text-sm font-medium"
