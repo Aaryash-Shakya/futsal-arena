@@ -1,13 +1,13 @@
 <template>
 	<div class="min-h-screen bg-gray-900 text-white">
-		<div class="container mx-auto px-4 py-8">
+		<div class="container mx-auto px-4 md:px-6 py-4 md:py-6">
 			<!-- Loading State -->
 			<div v-if="isLoading" class="flex justify-center items-center h-64">
 				<div class="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500" />
 			</div>
 
 			<!-- Error State -->
-			<div v-else-if="error" class="text-center py-12">
+			<div v-else-if="error" class="text-center py-8 md:py-12">
 				<UIcon name="i-lucide-alert-circle" class="text-5xl mb-4 mx-auto text-red-500" />
 				<h3 class="text-xl font-semibold mb-2 text-red-500">Failed to load match</h3>
 				<p class="text-sm mb-6 text-gray-400">{{ error }}</p>
@@ -23,7 +23,7 @@
 			<div v-else-if="match" class="max-w-4xl mx-auto">
 				<!-- Back Button -->
 				<button
-					class="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+					class="mb-4 md:mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
 					@click="$router.back()"
 				>
 					<UIcon name="i-lucide-arrow-left" class="text-lg" />
@@ -31,13 +31,13 @@
 				</button>
 
 				<!-- Match Header -->
-				<div class="bg-gray-800 rounded-lg p-8 mb-6 border border-gray-700">
-					<div class="flex items-center justify-center mb-6">
+				<div class="bg-gray-800 rounded-lg p-4 md:p-6 mb-4 md:mb-6 border border-gray-700">
+					<div class="flex items-center justify-center mb-4 md:mb-6">
 						<h1 class="text-3xl font-bold text-center">Match Details</h1>
 					</div>
 
 					<!-- Teams and Score -->
-					<div class="flex items-center justify-center gap-12">
+					<div class="flex items-center justify-center gap-6 md:gap-12">
 						<!-- Home Team -->
 						<div class="text-center">
 							<div class="flex items-center gap-4 mb-3">
@@ -53,7 +53,7 @@
 
 						<!-- Score -->
 						<div class="text-center">
-							<div v-if="match.result" class="text-5xl font-bold text-purple-400 mb-2">
+							<div v-if="match.result" class="text-3xl md:text-5xl font-bold text-purple-400 mb-2">
 								{{ match.result.homeScore }} - {{ match.result.awayScore }}
 							</div>
 							<div v-else class="text-3xl font-medium text-gray-400 mb-2">vs</div>
@@ -78,12 +78,12 @@
 				</div>
 
 				<!-- Match Information -->
-				<div class="bg-gray-800 rounded-lg p-6 border border-gray-700">
+				<div class="bg-gray-800 rounded-lg p-4 md:p-6 border border-gray-700">
 					<h2 class="text-xl font-semibold mb-4 text-purple-400">Match Information</h2>
 
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
 						<!-- Date & Time -->
-						<div class="bg-gray-900 rounded-lg p-4">
+						<div class="bg-gray-900 rounded-lg p-3 md:p-4">
 							<div class="flex items-center gap-3 mb-2">
 								<UIcon name="i-lucide-calendar" class="text-purple-400" />
 								<h3 class="font-medium">Date & Time</h3>
@@ -92,7 +92,7 @@
 						</div>
 
 						<!-- Venue -->
-						<div class="bg-gray-900 rounded-lg p-4">
+						<div class="bg-gray-900 rounded-lg p-3 md:p-4">
 							<div class="flex items-center gap-3 mb-2">
 								<UIcon name="i-lucide-map-pin" class="text-purple-400" />
 								<h3 class="font-medium">Venue</h3>
@@ -101,7 +101,7 @@
 						</div>
 
 						<!-- Status -->
-						<div class="bg-gray-900 rounded-lg p-4">
+						<div class="bg-gray-900 rounded-lg p-3 md:p-4">
 							<div class="flex items-center gap-3 mb-2">
 								<UIcon name="i-lucide-flag" class="text-purple-400" />
 								<h3 class="font-medium">Status</h3>
@@ -110,7 +110,7 @@
 						</div>
 
 						<!-- Match Type -->
-						<div class="bg-gray-900 rounded-lg p-4">
+						<div class="bg-gray-900 rounded-lg p-3 md:p-4">
 							<div class="flex items-center gap-3 mb-2">
 								<UIcon name="i-lucide-trophy" class="text-purple-400" />
 								<h3 class="font-medium">Competition</h3>
@@ -120,17 +120,17 @@
 					</div>
 
 					<!-- Match Summary Section (if match has result) -->
-					<div v-if="match.result" class="mt-8">
-						<h3 class="text-xl font-semibold mb-6 text-purple-400">Match Summary</h3>
+					<div v-if="match.result" class="mt-6 md:mt-8">
+						<h3 class="text-xl font-semibold mb-4 md:mb-6 text-purple-400">Match Summary</h3>
 
 						<!-- Goals Section -->
-						<div v-if="goals && goals.length > 0" class="bg-gray-900 rounded-lg p-6">
+						<div v-if="goals && goals.length > 0" class="bg-gray-900 rounded-lg p-4 md:p-6">
 							<div class="flex items-center gap-3 mb-4">
 								<UIcon name="i-lucide-target" class="text-purple-400 text-xl" />
 								<h4 class="text-lg font-semibold">Goals</h4>
 							</div>
 
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
 								<!-- Home Team Goals -->
 								<div>
 									<h5 class="text-sm font-medium text-gray-400 mb-3 flex items-center gap-2">
@@ -141,7 +141,7 @@
 										<div
 											v-for="goal in homeTeamGoals"
 											:key="goal._id"
-											class="flex items-center justify-between p-3 bg-gray-800 rounded-lg"
+											class="flex items-center justify-between p-2 md:p-3 bg-gray-800 rounded-lg"
 										>
 											<div class="flex items-center gap-3">
 												<UIcon name="i-lucide-circle-dot" class="text-green-400" />
@@ -167,7 +167,7 @@
 										<div
 											v-for="goal in awayTeamGoals"
 											:key="goal._id"
-											class="flex items-center justify-between p-3 bg-gray-800 rounded-lg"
+											class="flex items-center justify-between p-2 md:p-3 bg-gray-800 rounded-lg"
 										>
 											<div class="flex items-center gap-3">
 												<UIcon name="i-lucide-circle-dot" class="text-blue-400" />
@@ -186,7 +186,7 @@
 						</div>
 
 						<!-- No Goals Message -->
-						<div v-else-if="goals && goals.length === 0" class="bg-gray-900 rounded-lg p-6">
+						<div v-else-if="goals && goals.length === 0" class="bg-gray-900 rounded-lg p-4 md:p-6">
 							<div class="text-center text-gray-400">
 								<UIcon name="i-lucide-target" class="text-3xl mb-2" />
 								<p>No goals recorded for this match</p>
