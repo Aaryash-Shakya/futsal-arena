@@ -12,9 +12,9 @@ const props = withDefaults(
 
 // Map of logos
 const teamLogoMap: Record<string, string> = {
-	"Arbyte Storm FC": "/images/storm.png",
-	"Arbyte Gladiators FC": "/images/gladiators.png",
-	"Arbyte Titan FC": "/images/titan.png",
+	"Storm FC": "/images/storm.png",
+	"Gladiators FC": "/images/gladiators.png",
+	"Titan FC": "/images/titan.png",
 };
 
 // Pick the logo safely

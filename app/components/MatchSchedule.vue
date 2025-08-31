@@ -4,7 +4,7 @@
 		style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted)"
 	>
 		<div
-			class="px-6 py-6 border-b"
+			class="px-4 md:px-6 py-4 md:py-6 border-b"
 			style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted)"
 		>
 			<h2 class="text-xl font-bold flex items-center gap-2" style="color: var(--color-text)">
@@ -15,7 +15,7 @@
 		</div>
 
 		<!-- Loading State -->
-		<div v-if="isLoading" class="p-6">
+		<div v-if="isLoading" class="p-4 md:p-6">
 			<div class="overflow-x-auto">
 				<div class="min-w-max">
 					<div class="flex flex-col gap-2">
@@ -63,7 +63,7 @@
 		</div>
 
 		<!-- Error State -->
-		<div v-else-if="error" class="px-6 py-8 text-center">
+		<div v-else-if="error" class="px-4 md:px-6 py-6 md:py-8 text-center">
 			<UIcon name="i-lucide-alert-circle" class="text-4xl mb-3 mx-auto" style="color: var(--color-danger)" />
 			<h3 class="text-lg font-semibold mb-2" style="color: var(--color-danger)">Failed to load matches</h3>
 			<p class="text-sm mb-4" style="color: var(--color-text-muted)">{{ error }}</p>
@@ -77,14 +77,14 @@
 		</div>
 
 		<!-- Empty State -->
-		<div v-else-if="matches.length === 0" class="px-4 py-8 text-center">
+		<div v-else-if="matches.length === 0" class="px-4 md:px-6 py-6 md:py-8 text-center">
 			<UIcon name="i-lucide-calendar-x" class="text-4xl mb-3 mx-auto" style="color: var(--color-text-muted)" />
 			<h3 class="text-lg font-semibold mb-2" style="color: var(--color-text)">No matches scheduled</h3>
 			<p class="text-sm" style="color: var(--color-text-muted)">Check back later for upcoming matches</p>
 		</div>
 
 		<!-- Matches List -->
-		<div v-else class="p-6">
+		<div v-else class="p-4 md:p-6">
 			<div class="overflow-x-auto">
 				<div class="min-w-max">
 					<div class="flex flex-col gap-2">

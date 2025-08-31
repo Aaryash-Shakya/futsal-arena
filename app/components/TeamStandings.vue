@@ -1,6 +1,6 @@
 <template>
 	<div class="rounded-xl shadow-md border overflow-hidden backdrop-blur-sm mb-8" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
-		<div class="px-6 py-6 border-b" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
+		<div class="px-4 md:px-6 py-4 md:py-6 border-b" style="background-color: var(--color-bg-surface); border-color: var(--color-bg-muted);">
 			<h2 class="text-xl font-bold flex items-center gap-2" style="color: var(--color-text);">
 				<UIcon name="i-lucide-calendar" class="text-2xl" style="color: var(--color-primary);" />
 				Team Standings
@@ -9,7 +9,7 @@
 		</div>
 
 		<!-- Loading State -->
-		<div v-if="isLoading" class="p-6">
+		<div v-if="isLoading" class="p-4 md:p-6">
 			<div class="flex flex-col gap-4">
 				<div
 					v-for="n in 3"
@@ -34,7 +34,7 @@
 		</div>
 
 		<!-- Error State -->
-		<div v-else-if="error" class="px-6 py-12 text-center">
+		<div v-else-if="error" class="px-4 md:px-6 py-8 md:py-12 text-center">
 			<UIcon name="i-lucide-alert-circle" class="text-5xl mb-4 mx-auto" style="color: var(--color-danger)" />
 			<h3 class="text-xl font-semibold mb-2" style="color: var(--color-danger)">Failed to load standings</h3>
 			<p class="text-sm mb-6" style="color: var(--color-text-muted)">{{ error }}</p>
@@ -48,7 +48,7 @@
 		</div>
 
 		<!-- Empty State -->
-		<div v-else-if="standings.length === 0" class="px-6 py-12 text-center">
+		<div v-else-if="standings.length === 0" class="px-4 md:px-6 py-8 md:py-12 text-center">
 			<UIcon name="i-lucide-table" class="text-5xl mb-4 mx-auto" style="color: var(--color-text-muted)" />
 			<h3 class="text-xl font-semibold mb-2" style="color: var(--color-text)">No standings available</h3>
 			<p class="text-sm" style="color: var(--color-text-muted)">
@@ -57,7 +57,7 @@
 		</div>
 
 		<!-- Standings Table -->
-		<div v-else class="p-6">
+		<div v-else class="p-4 md:p-6">
 			<StandingsTable :standings="standings" />
 		</div>
 	</div>
