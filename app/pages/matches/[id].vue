@@ -223,7 +223,12 @@ const homeTeamGoals = computed(() => {
 				acc.push(goal);
 			}
 			return acc;
-		}, []);
+		}, [])
+		.sort((a, b) => {
+			const aGoalCount = getGoalCount(a.playerId._id, match.value!.homeTeam._id);
+			const bGoalCount = getGoalCount(b.playerId._id, match.value!.homeTeam._id);
+			return bGoalCount - aGoalCount; // Sort by highest score first
+		});
 });
 
 const awayTeamGoals = computed(() => {
@@ -236,7 +241,12 @@ const awayTeamGoals = computed(() => {
 				acc.push(goal);
 			}
 			return acc;
-		}, []);
+		}, [])
+		.sort((a, b) => {
+			const aGoalCount = getGoalCount(a.playerId._id, match.value!.awayTeam._id);
+			const bGoalCount = getGoalCount(b.playerId._id, match.value!.awayTeam._id);
+			return bGoalCount - aGoalCount; // Sort by highest score first
+		});
 });
 
 const formatDetailedDate = (dateString: string) => {
